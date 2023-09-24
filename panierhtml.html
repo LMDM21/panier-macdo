@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Panier d'achat - Style McDonald's</title>
+    <style>
+        /* Styles CSS pour le panier */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F9F9F9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #D2AD0A;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #panier {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #recapitulatif {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Aligner verticalement */
+            margin-bottom: 10px;
+            border-bottom: 1px solid #E1E1E1;
+            padding-bottom: 5px;
+        }
+
+        .item span:first-child {
+            font-weight: bold;
+            min-width: 150px; /* Largeur minimale pour le nom du produit */
+        }
+
+        .item button {
+            background-color: #D2AD0A;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .item button:hover {
+            background-color: #C19808;
+        }
+
+        /* Style pour le montant total */
+        .item .total-amount {
+            font-weight: bold;
+            margin-left: 10px; /* Marge à gauche pour séparer le montant du bouton */
+        }
+
+        /* Style pour les images du récapitulatif */
+        img.product-logo {
+            max-width: 50px;
+            max-height: 50px;
+            margin-left: 10px;
+        }
+
+        /* Style pour le tableau des catégories */
+        table.categories {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table.categories th,
+        table.categories td {
+            border: 1px solid #E1E1E1;
+            padding: 5px;
+            text-align: left;
+        }
+
+        table.categories th {
+            background-color: #D2AD0A;
+            color: white;
+        }
+
+        /* Style pour le bouton de réinitialisation */
+        #reset-button {
+            background-color: #D2AD0A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto; /* Centrer horizontalement et ajouter une marge en haut et en bas */
+        }
+
+        #reset-button:hover {
+            background-color: #C19808;
+        }
+
+       /* Style pour le pied de page */
+#footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0; /* Position à droite */
+    bottom: 0;
+    width: 200px; /* Largeur du bandeau latéral */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer horizontalement */
+    justify-content: space-between; /* Espacement vertical uniforme */
+}
+
+/* Style pour le bandeau grisé */
+#footer-content {
+    background-color: #666;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Style pour le bouton "Contact" */
+#contact-link {
+    background-color: #D2AD0A;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 10px; /* Ajout d'une marge en bas */
+}
+
+#contact-link:hover {
+    background-color: #C19808;
+}
+
+    </style>
+</head>
+<body>
+    <h1>McDonald's - Panier d'Achat</h1>
+    <div id="panier">
+        <!-- Les articles du panier seront ajoutés dynamiquement par JavaScript -->
+    </div>
+    <h2>Total: <span id="total">0.00</span> EUR</h2>
+    <button id="reset-button">Réinitialiser Quantités</button>
+
+    <div id="recapitulatif">
+        <!-- Le récapitulatif des commandes sera ajouté dynamiquement par JavaScript -->
+    </div>
+
+    <div id="footer">
+        <div id="footer-content">
+            <a id="contact-link" href="https://discord.gg/KKqk8GAHex">Contact</a>
+            <p id="credit">Le_Monde_De_Max</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript pour gérer le panier d'achat
+        const panier = document.getElementById("panier");
+        const totalSpan = document.getElementById("total");
+        const resetButton = document.getElementById("reset-button");
+        const recapitulatif = document.getElementById("recapitulatif");
+
+        // Liste pré-définie d'articles (modifiable)
+        const articlesPreDefinis = [
+            { nom: "Menus (Burger)", prix: 12, quantite: 0, categorie: "Menus", image: "lien_vers_image1.jpg" },
+            { nom: "Menus (Nuggets)", prix: 10, quantite: 0, categorie: "Menus", image: "lien_vers_image2.jpg" },
+            { nom: "Burger", prix: 7, quantite: 0, categorie: "Burger", image: "lien_vers_image1.jpg" },
+            { nom: "Frite", prix: 4, quantite: 0, categorie: "Frites", image: "lien_vers_image1.jpg" },
+            { nom: "Nuggets (boîte de 6)", prix: 5, quantite: 0, categorie: "Nuggets", image: "lien_vers_image2.jpg" },
+            { nom: "Boisson", prix: 3, quantite: 0, categorie: "Boissons", image: "lien_vers_image2.jpg" },
+            { nom: "Burger (x10)", prix: 70, quantite: 0, categorie: "Burger", image: "lien_vers_image1.jpg" },
+            { nom: "Frite (x10)", prix: 40, quantite: 0, categorie: "Frites", image: "lien_vers_image1.jpg" },
+            { nom: "Nuggets (10 boîte de 6)", prix: 50, quantite: 0, categorie: "Nuggets", image: "lien_vers_image2.jpg" }
+            // ... Ajoutez les autres articles avec leurs images
+        ];
+
+        // Initialisez les quantités et l'affichage
+        let quantites = {};
+
+        articlesPreDefinis.forEach(article => {
+            quantites[article.nom] = 0;
+            const articleElement = document.createElement("div");
+            articleElement.classList.add("item");
+
+            const nomSpan = document.createElement("span");
+            nomSpan.textContent = article.nom;
+            articleElement.appendChild(nomSpan);
+
+            const boutonMoins = document.createElement("button");
+            boutonMoins.textContent = "-";
+            boutonMoins.addEventListener("click", () => decrementerQuantite(article));
+            articleElement.appendChild(boutonMoins);
+
+            const quantiteSpan = document.createElement("span");
+            quantiteSpan.textContent = "Quantité: " + quantites[article.nom];
+            quantiteSpan.id = `quantite-${article.nom}`;
+            articleElement.appendChild(quantiteSpan);
+
+            const boutonPlus = document.createElement("button");
+            boutonPlus.textContent = "+";
+            boutonPlus.addEventListener("click", () => incrementerQuantite(article));
+            articleElement.appendChild(boutonPlus);
+
+            const totalAmountSpan = document.createElement("span");
+            totalAmountSpan.textContent = `${(article.prix * quantites[article.nom]).toFixed(2)} EUR`;
+            totalAmountSpan.classList.add("total-amount");
+            articleElement.appendChild(totalAmountSpan);
+
+            panier.appendChild(articleElement);
+        });
+
+        function incrementerQuantite(article) {
+            quantites[article.nom]++;
+            mettreAJourAffichage(article);
+            mettreAJourRecapitulatif();
+        }
+
+        function decrementerQuantite(article) {
+            if (quantites[article.nom] > 0) {
+                quantites[article.nom]--;
+                mettreAJourAffichage(article);
+                mettreAJourRecapitulatif();
+            }
+        }
+
+        function mettreAJourAffichage(article) {
+            const quantiteSpan = document.getElementById(`quantite-${article.nom}`);
+            quantiteSpan.textContent = "Quantité: " + quantites[article.nom];
+
+            const totalAmountSpan = document.querySelector(`.total-amount`);
+            totalAmountSpan.textContent = `${calculerTotal().toFixed(2)} EUR`;
+
+            mettreAJourTotal();
+        }
+
+        function mettreAJourTotal() {
+            const total = calculerTotal();
+            totalSpan.textContent = total.toFixed(2) + " EUR";
+        }
+
+        // Fonction pour calculer le total
+        function calculerTotal() {
+            return articlesPreDefinis.reduce((acc, article) => {
+                return acc + (article.prix * quantites[article.nom]);
+            }, 0);
+        }
+
+        // Gestionnaire d'événements pour le bouton "Reset"
+        resetButton.addEventListener('click', () => {
+            articlesPreDefinis.forEach(article => {
+                quantites[article.nom] = 0;
+                mettreAJourAffichage(article);
+            });
+            mettreAJourRecapitulatif();
+        });
+
+        // Fonction pour mettre à jour le récapitulatif des commandes
+        function mettreAJourRecapitulatif() {
+            recapitulatif.innerHTML = "";
+
+            const categoriesUniques = [...new Set(articlesPreDefinis.map(article => article.categorie))];
+
+            categoriesUniques.forEach(categorie => {
+                const categorieTable = document.createElement("table");
+                categorieTable.classList.add("categories");
+
+                const categorieHeaderRow = categorieTable.insertRow();
+                const categorieHeaderCell = categorieHeaderRow.insertCell();
+                categorieHeaderCell.textContent = categorie;
+                categorieHeaderCell.colSpan = 3; // Fusionner les cellules pour le nom de la catégorie
+                categorieHeaderCell.style.fontWeight = "bold";
+                categorieHeaderCell.style.backgroundColor = "#D2AD0A";
+                categorieHeaderCell.style.color = "white";
+
+                articlesPreDefinis.forEach(article => {
+                    if (article.categorie === categorie && quantites[article.nom] > 0) {
+                        const recapItemRow = categorieTable.insertRow();
+                        const nomCell = recapItemRow.insertCell();
+                        const quantiteCell = recapItemRow.insertCell();
+                        const prixCell = recapItemRow.insertCell();
+                        const imageCell = recapItemRow.insertCell(); // Cellule pour l'image
+
+                        nomCell.textContent = article.nom;
+
+                        quantiteCell.textContent = `Quantité: ${quantites[article.nom]}`;
+
+                        prixCell.textContent = `${(article.prix * quantites[article.nom]).toFixed(2)} EUR`;
+
+                        // Ajouter l'image du produit
+                        const productImage = document.createElement("img");
+                        productImage.src = article.image;
+                        productImage.alt = article.nom;
+                        productImage.classList.add("product-logo");
+                        imageCell.appendChild(productImage);
+                    }
+                });
+
+                recapitulatif.appendChild(categorieTable);
+            });
+        }
+    </script>
+</body>
+</html>
