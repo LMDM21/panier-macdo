@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Panier d'achat - Style McDonald's</title>
+    <style>
+        /* Styles CSS pour le panier */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F9F9F9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #D2AD0A;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #container {
+            margin: center;
+        }
+
+        #panier {
+            max-width: 100%;
+            margin-left: 100px;
+            margin-bottom: 5px;
+            margin-right: 1px;
+            background-color: white;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #recapitulatif {
+            max-width: 600px;
+            margin-left: 50px;
+            background-color: white;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #Menuslist {
+            max-width: 350px;
+            max-height: 350px;
+            margin-left: 50px;
+            background-color: white;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #Total {
+            max-width: 500%;
+            margin-left: 10px;
+            background-color: white;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Aligner verticalement */
+            margin-bottom: 10px;
+            border-bottom: 1px solid #E1E1E1;
+            padding-bottom: 5px;
+        }
+
+        .item span:first-child {
+            font-weight: bold;
+            min-width: 195px; /* Largeur minimale pour le nom du produit */
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 2px solid orange; /* Cadre orange autour du tableau */
+            width: 100%;
+            margin: auto; /* Centrer le tableau */
+        }
+        th, td {
+            border: 1px solid black; /* Bordures des cellules */
+            padding: 10px;
+        }
+
+        .item button {
+            background-color: #D2AD0A;
+            color: white;
+            border: solide;
+            border-left: #cecccc96;
+            border-right: #cecccc96;
+            border-top: #cecccc96;
+            padding: 5px 10px;
+            margin-left: 10px;
+            border-radius: 36px;
+            cursor: pointer;
+        }
+
+        .item button:hover {
+            background-color: #C19808;
+        }
+
+        /* Style pour le montant total */
+        .item .total-amount {
+            font-weight: bold;
+            margin-left: 10px; /* Marge à gauche pour séparer le montant du bouton */
+        }
+
+        /* Style pour les images du récapitulatif */
+        img.product-logo {
+            max-width: 50px;
+            max-height: 50px;
+            margin-left: 5px;
+        }
+
+        /* Style pour le tableau des catégories */
+        table.categories {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table.categories th,
+        table.categories td {
+            border: 1px solid #E1E1E1;
+            padding: 5px;
+            text-align: left;
+        }
+
+        table.categories th {
+            background-color: #D2AD0A;
+            color: white;
+        }
+
+        /* Style pour le bouton de réinitialisation */
+        #reset-button {
+            background-color: #D2AD0A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            display: block;
+            margin-left: 100px; /* Centrer horizontalement et ajouter une marge en haut et en bas */
+            margin-bottom: 5px;
+
+        }
+
+        #reset-button:hover {
+            background-color: #C19808;
+        }
+
+       /* Style pour le pied de page */
+#footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0; /* Position à droite */
+    bottom: 0;
+    width: 200px; /* Largeur du bandeau latéral */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer horizontalement */
+    justify-content: space-between; /* Espacement vertical uniforme */
+}
+
+/* Style pour le bandeau grisé */
+#footer-content {
+    background-color: #666;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Style pour le bouton "Contact" */
+#contact-link {
+    background-color: #D2AD0A;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 10px; /* Ajout d'une marge en bas */
+}
+
+#Retour {
+    background-color: #725de7;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 10px; /* Ajout d'une marge en bas */
+}
+
+#contact-link:hover {
+    background-color: #C19808;
+}
+
+    </style>
+    <style>
+        .container {
+            display: flex; /* Utiliser un affichage flexible pour les aligner côte à côte */
+        }
+        .body {
+            width: 50%; /* Répartir l'espace en deux colonnes égales */
+        }
+    </style>
+</head>
+<body>
+    <h1>McDonald's - Panier d'Achat</h1>
+    <div class="container">
+        <div id="panier">
+            <!-- Les articles du panier seront ajoutés dynamiquement par JavaScript -->
+        </div>
+        <div id="recapitulatif">
+            <!-- Le récapitulatif des commandes sera ajouté dynamiquement par JavaScript -->
+        </div>
+        <div id="Menuslist">
+            <table>
+                <tr>
+                    <th>Menus happy meal</th>
+                    <td>
+                        4 nuggets ou 1 hamburger + 1 frite ou 1 potatoes + 1 boisson au choix + dessert au choix
+                    </td>
+                </tr>
+                <tr>
+                    <th>Menus Best of</th>
+                    <td>
+                        1 frite ou 1 potatoes + 1 hamburger ou 6 nuggets + boisson au choix
+                    </td>
+                </tr>
+                <tr>
+                    <th>Menus Maxi Best of</th>
+                    <td>
+                        2 frites ou 2 potatoes + 2 hamburgers ou 9 nuggets + 2 boissons au choix
+                    </td>
+                </tr>
+                <tr>
+                    <th>Boissons</th>
+                    <td>
+                        Cola / Fizzup /Oastea
+                    </td>
+                </tr>
+                <tr>
+                    <th>Desserts</th>
+                    <td>
+                        pomme ou 5 fraises ou 1 religieuse
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <h2 id="Total">Total: <span id="total">0.00</span> EUR</h2>
+    <button id="reset-button">Réinitialiser Quantités</button>
+
+
+
+    <div id="footer">
+        <div id="footer-content">
+            <a id="contact-link" href="https://discord.gg/KKqk8GAHex">Contact</a>
+            <p id="credit">Le_Monde_De_Max</p>
+            <a id="Retour" href="page1.html">Retour page principale </a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript pour gérer le panier d'achat
+        const panier = document.getElementById("panier");
+        const totalSpan = document.getElementById("total");
+        const resetButton = document.getElementById("reset-button");
+        const recapitulatif = document.getElementById("recapitulatif");
+
+        // Liste pré-définie d'articles (modifiable)
+        const articlesPreDefinis = [
+            { nom: "(M) happy meal", prix: 60, quantite: 0, categorie: "Menus", image: "https://zupimages.net/up/23/38/1o0z.jpg" },
+            { nom: "(M) Best of", prix: 90, quantite: 0, categorie: "Menus", image: "https://zupimages.net/up/23/38/3i5h.jpg" },
+            { nom: "(M) Maxi Best of", prix: 200, quantite: 0, categorie: "Menus", image: "https://zupimages.net/up/23/38/1o0z.jpg" },
+            { nom: "Frites", prix: 25, quantite: 0, categorie: "Frites", image: "https://zupimages.net/up/23/38/s130.jpg" },
+            { nom: "Burger", prix: 40, quantite: 0, categorie: "Burger", image: "https://zupimages.net/up/23/38/din5.jpg" },
+            { nom: "Nuggets (boîte de 4)", prix: 40, quantite: 0, categorie: "Nuggets", image: "https://zupimages.net/up/23/38/8cn5.jpg" },
+            { nom: "Boisson", prix: 15, quantite: 0, categorie: "Boissons", image: "https://zupimages.net/up/23/38/b8vk.jpg" },
+            { nom: "Burger (x10)", prix: 400, quantite: 0, categorie: "Burger", image: "https://zupimages.net/up/23/38/oc72.jpg" },
+            { nom: "Frite (x10)", prix: 250, quantite: 0, categorie: "Frites", image: "https://zupimages.net/up/23/38/rozk.jpg" },
+            { nom: "Nuggets (10 boîte de 4)", prix: 400, quantite: 0, categorie: "Nuggets", image: "https://zupimages.net/up/23/38/nb1k.jpg" },
+            { nom: "Pomme", prix: 15, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/cr6j.png" },
+            { nom: "Fraise (boîte de 5)", prix: 15, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/2b9t.png" },
+            { nom: "Religieuse", prix: 15, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/h5n5.png" },
+            { nom: "Pomme (x10)", prix: 150, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/cr6j.png" },
+            { nom: "Fraise (10 boîte de 5)", prix: 150, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/2b9t.png" },
+            { nom: "Religieuse (x10)", prix: 150, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/h5n5.png" }
+            // ... Ajoutez les autres articles avec leurs images
+        ];
+
+        // Initialisez les quantités et l'affichage
+        let quantites = {};
+
+        articlesPreDefinis.forEach(article => {
+            quantites[article.nom] = 0;
+            const articleElement = document.createElement("div");
+            articleElement.classList.add("item");
+
+            const nomSpan = document.createElement("span");
+            nomSpan.textContent = article.nom;
+            articleElement.appendChild(nomSpan);
+
+            const boutonMoins = document.createElement("button");
+            boutonMoins.textContent = "-";
+            boutonMoins.addEventListener("click", () => decrementerQuantite(article));
+            articleElement.appendChild(boutonMoins);
+
+            const quantiteSpan = document.createElement("span");
+            quantiteSpan.textContent = "Quantité: " + quantites[article.nom];
+            quantiteSpan.id = `quantite-${article.nom}`;
+            articleElement.appendChild(quantiteSpan);
+
+            const boutonPlus = document.createElement("button");
+            boutonPlus.textContent = "+";
+            boutonPlus.addEventListener("click", () => incrementerQuantite(article));
+            articleElement.appendChild(boutonPlus);
+
+            const totalAmountSpan = document.createElement("span");
+            totalAmountSpan.textContent = `${(article.prix * quantites[article.nom]).toFixed(2)} EUR`;
+            totalAmountSpan.classList.add("total-amount");
+            articleElement.appendChild(totalAmountSpan);
+
+            panier.appendChild(articleElement);
+        });
+
+        function incrementerQuantite(article) {
+            quantites[article.nom]++;
+            mettreAJourAffichage(article);
+            mettreAJourRecapitulatif();
+        }
+
+        function decrementerQuantite(article) {
+            if (quantites[article.nom] > 0) {
+                quantites[article.nom]--;
+                mettreAJourAffichage(article);
+                mettreAJourRecapitulatif();
+            }
+        }
+
+        function mettreAJourAffichage(article) {
+            const quantiteSpan = document.getElementById(`quantite-${article.nom}`);
+            quantiteSpan.textContent = "Quantité: " + quantites[article.nom];
+
+            const totalAmountSpan = document.querySelector(`.total-amount`);
+            totalAmountSpan.textContent = `${calculerTotal().toFixed(2)} EUR`;
+
+            mettreAJourTotal();
+        }
+
+        function mettreAJourTotal() {
+            const total = calculerTotal();
+            totalSpan.textContent = total.toFixed(2) + " EUR";
+        }
+
+        // Fonction pour calculer le total
+        function calculerTotal() {
+            return articlesPreDefinis.reduce((acc, article) => {
+                return acc + (article.prix * quantites[article.nom]);
+            }, 0);
+        }
+
+        // Gestionnaire d'événements pour le bouton "Reset"
+        resetButton.addEventListener('click', () => {
+            articlesPreDefinis.forEach(article => {
+                quantites[article.nom] = 0;
+                mettreAJourAffichage(article);
+            });
+            mettreAJourRecapitulatif();
+        });
+
+        // Fonction pour mettre à jour le récapitulatif des commandes
+        function mettreAJourRecapitulatif() {
+            recapitulatif.innerHTML = "";
+
+            const categoriesUniques = [...new Set(articlesPreDefinis.map(article => article.categorie))];
+
+            categoriesUniques.forEach(categorie => {
+                const categorieTable = document.createElement("table");
+                categorieTable.classList.add("categories");
+
+                const categorieHeaderRow = categorieTable.insertRow();
+                const categorieHeaderCell = categorieHeaderRow.insertCell();
+                categorieHeaderCell.textContent = categorie;
+                categorieHeaderCell.colSpan = 3; // Fusionner les cellules pour le nom de la catégorie
+                categorieHeaderCell.style.fontWeight = "bold";
+                categorieHeaderCell.style.backgroundColor = "#D2AD0A";
+                categorieHeaderCell.style.color = "white";
+
+                articlesPreDefinis.forEach(article => {
+                    if (article.categorie === categorie && quantites[article.nom] > 0) {
+                        const recapItemRow = categorieTable.insertRow();
+                        const nomCell = recapItemRow.insertCell();
+                        const quantiteCell = recapItemRow.insertCell();
+                        const prixCell = recapItemRow.insertCell();
+                        const imageCell = recapItemRow.insertCell(); // Cellule pour l'image
+
+                        nomCell.textContent = article.nom;
+
+                        quantiteCell.textContent = `Quantité: ${quantites[article.nom]}`;
+
+                        prixCell.textContent = `${(article.prix * quantites[article.nom]).toFixed(2)} EUR`;
+
+                        // Ajouter l'image du produit
+                        const productImage = document.createElement("img");
+                        productImage.src = article.image;
+                        productImage.alt = article.nom;
+                        productImage.classList.add("product-logo");
+                        imageCell.appendChild(productImage);
+                    }
+                });
+
+                recapitulatif.appendChild(categorieTable);
+            });
+        }
+    </script>
+</body>
+</html>
+
