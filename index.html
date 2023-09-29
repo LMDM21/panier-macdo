@@ -49,6 +49,19 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
 
+        #Menuslist {
+            max-width: 350px;
+            max-height: 350px;
+            margin-left: 50px;
+            background-color: white;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
         #Total {
             max-width: 500%;
             margin-left: 10px;
@@ -73,6 +86,17 @@
         .item span:first-child {
             font-weight: bold;
             min-width: 195px; /* Largeur minimale pour le nom du produit */
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 2px solid orange; /* Cadre orange autour du tableau */
+            width: 100%;
+            margin: auto; /* Centrer le tableau */
+        }
+        th, td {
+            border: 1px solid black; /* Bordures des cellules */
+            padding: 10px;
         }
 
         .item button {
@@ -107,7 +131,7 @@
 
         /* Style pour le tableau des catégories */
         table.categories {
-            width: 100%;
+            width: 80%;
             border-collapse: collapse;
             margin-top: 10px;
         }
@@ -199,6 +223,40 @@
         </div>
         <div id="recapitulatif">
             <!-- Le récapitulatif des commandes sera ajouté dynamiquement par JavaScript -->
+        </div>
+        <div id="Menuslist">
+            <table>
+                <tr>
+                    <th>Menus happy meal</th>
+                    <td>
+                        4 nuggets ou 1 hamburger + 1 frite ou 1 potatoes + 1 boisson au choix + dessert au choix
+                    </td>
+                </tr>
+                <tr>
+                    <th>Menus Best of</th>
+                    <td>
+                        1 frite ou 1 potatoes + 1 hamburger ou 6 nuggets + boisson au choix
+                    </td>
+                </tr>
+                <tr>
+                    <th>Menus Maxi Best of</th>
+                    <td>
+                        2 frites ou 2 potatoes + 2 hamburgers ou 9 nuggets + 2 boissons au choix
+                    </td>
+                </tr>
+                <tr>
+                    <th>Boissons</th>
+                    <td>
+                        coca-cola
+                    </td>
+                </tr>
+                <tr>
+                    <th>Desserts</th>
+                    <td>
+                        pomme ou 5 fraises ou 1 religieuse
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
     <h2 id="Total">Total: <span id="total">0.00</span> EUR</h2>
