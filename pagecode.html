@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accès à la page</title>
+</head>
+<body>
+    <h1>Entrez le code d'accès :</h1>
+    <form id="access-form">
+        <input type="text" id="access-code" placeholder="Code d'accès">
+        <input type="submit" value="Accéder">
+    </form>
+    <div id="access-message"></div>
+    <div>
+        <a href="page1.html">Retour page principale </a>
+    </div>
+    <script>
+        document.getElementById("access-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var enteredCode = document.getElementById("access-code").value;
+            
+            // Vérifiez le code d'accès (vous pouvez utiliser un code prédéfini ici).
+            if (enteredCode === "testcode") {
+                // Redirigez l'utilisateur vers la page souhaitée.
+                window.location.href = "1test.html";
+            } else {
+                document.getElementById("access-message").innerHTML = "Code incorrect. Veuillez réessayer.";
+            }
+            if (enteredCode === "mcdoNT") {
+                // Redirigez l'utilisateur vers la page souhaitée.
+                window.location.href = "panierhtml.html";
+            } else {
+                document.getElementById("access-message").innerHTML = "Code incorrect. Veuillez réessayer.";
+            }
+            if (enteredCode === "testcode3") {
+                // Redirigez l'utilisateur vers la page souhaitée.
+                window.location.href = "#";
+            } else {
+                document.getElementById("access-message").innerHTML = "Code incorrect. Veuillez réessayer.";
+            }
+        });
+    </script>
+</body>
+</html>
