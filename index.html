@@ -19,21 +19,45 @@
             text-align: center;
         }
 
+        #container {
+            margin: center;
+        }
+
         #panier {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin-left: 100px;
+            margin-bottom: 5px;
+            margin-right: 1px;
             background-color: white;
-            padding: 20px;
-            border-radius: 5px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
 
         #recapitulatif {
             max-width: 600px;
-            margin: 20px auto;
+            margin-left: 50px;
             background-color: white;
-            padding: 20px;
-            border-radius: 5px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #Total {
+            max-width: 500%;
+            margin-left: 10px;
+            background-color: white;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
 
@@ -48,7 +72,7 @@
 
         .item span:first-child {
             font-weight: bold;
-            min-width: 150px; /* Largeur minimale pour le nom du produit */
+            min-width: 195px; /* Largeur minimale pour le nom du produit */
         }
 
         .item button {
@@ -59,6 +83,7 @@
             border-right: #cecccc96;
             border-top: #cecccc96;
             padding: 5px 10px;
+            margin-left: 10px;
             border-radius: 36px;
             cursor: pointer;
         }
@@ -77,14 +102,14 @@
         img.product-logo {
             max-width: 50px;
             max-height: 50px;
-            margin-left: 10px;
+            margin-left: 5px;
         }
 
         /* Style pour le tableau des catégories */
         table.categories {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         table.categories th,
@@ -105,10 +130,12 @@
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 3px;
+            border-radius: 15px;
             cursor: pointer;
             display: block;
-            margin: 20px auto; /* Centrer horizontalement et ajouter une marge en haut et en bas */
+            margin-left: 100px; /* Centrer horizontalement et ajouter une marge en haut et en bas */
+            margin-bottom: 5px;
+
         }
 
         #reset-button:hover {
@@ -155,18 +182,29 @@
 }
 
     </style>
+    <style>
+        .container {
+            display: flex; /* Utiliser un affichage flexible pour les aligner côte à côte */
+        }
+        .body {
+            width: 50%; /* Répartir l'espace en deux colonnes égales */
+        }
+    </style>
 </head>
 <body>
     <h1>McDonald's - Panier d'Achat</h1>
-    <div id="panier">
-        <!-- Les articles du panier seront ajoutés dynamiquement par JavaScript -->
+    <div class="container">
+        <div id="panier">
+            <!-- Les articles du panier seront ajoutés dynamiquement par JavaScript -->
+        </div>
+        <div id="recapitulatif">
+            <!-- Le récapitulatif des commandes sera ajouté dynamiquement par JavaScript -->
+        </div>
     </div>
-    <h2>Total: <span id="total">0.00</span> EUR</h2>
+    <h2 id="Total">Total: <span id="total">0.00</span> EUR</h2>
     <button id="reset-button">Réinitialiser Quantités</button>
 
-    <div id="recapitulatif">
-        <!-- Le récapitulatif des commandes sera ajouté dynamiquement par JavaScript -->
-    </div>
+
 
     <div id="footer">
         <div id="footer-content">
@@ -184,15 +222,22 @@
 
         // Liste pré-définie d'articles (modifiable)
         const articlesPreDefinis = [
-            { nom: "Menus (Burger)", prix: 12, quantite: 0, categorie: "Menus", image: "https://zupimages.net/up/23/38/1o0z.jpg" },
-            { nom: "Menus (Nuggets)", prix: 10, quantite: 0, categorie: "Menus", image: "https://zupimages.net/up/23/38/3i5h.jpg" },
-            { nom: "Burger", prix: 7, quantite: 0, categorie: "Burger", image: "https://zupimages.net/up/23/38/din5.jpg" },
-            { nom: "Frite", prix: 4, quantite: 0, categorie: "Frites", image: "https://zupimages.net/up/23/38/s130.jpg" },
-            { nom: "Nuggets (boîte de 6)", prix: 5, quantite: 0, categorie: "Nuggets", image: "https://zupimages.net/up/23/38/8cn5.jpg" },
-            { nom: "Boisson", prix: 3, quantite: 0, categorie: "Boissons", image: "https://zupimages.net/up/23/38/b8vk.jpg" },
-            { nom: "Burger (x10)", prix: 70, quantite: 0, categorie: "Burger", image: "https://zupimages.net/up/23/38/oc72.jpg" },
-            { nom: "Frite (x10)", prix: 40, quantite: 0, categorie: "Frites", image: "https://zupimages.net/up/23/38/rozk.jpg" },
-            { nom: "Nuggets (10 boîte de 6)", prix: 50, quantite: 0, categorie: "Nuggets", image: "https://zupimages.net/up/23/38/nb1k.jpg" }
+            { nom: "(M) happy meal", prix: 60, quantite: 0, categorie: "Menus", image: "https://zupimages.net/up/23/38/1o0z.jpg" },
+            { nom: "(M) Best of", prix: 90, quantite: 0, categorie: "Menus", image: "https://zupimages.net/up/23/38/3i5h.jpg" },
+            { nom: "(M) Maxi Best of", prix: 200, quantite: 0, categorie: "Menus", image: "https://zupimages.net/up/23/38/1o0z.jpg" },
+            { nom: "Frites", prix: 25, quantite: 0, categorie: "Frites", image: "https://zupimages.net/up/23/38/s130.jpg" },
+            { nom: "Burger", prix: 40, quantite: 0, categorie: "Burger", image: "https://zupimages.net/up/23/38/din5.jpg" },
+            { nom: "Nuggets (boîte de 4)", prix: 40, quantite: 0, categorie: "Nuggets", image: "https://zupimages.net/up/23/38/8cn5.jpg" },
+            { nom: "Boisson", prix: 15, quantite: 0, categorie: "Boissons", image: "https://zupimages.net/up/23/38/b8vk.jpg" },
+            { nom: "Burger (x10)", prix: 400, quantite: 0, categorie: "Burger", image: "https://zupimages.net/up/23/38/oc72.jpg" },
+            { nom: "Frite (x10)", prix: 250, quantite: 0, categorie: "Frites", image: "https://zupimages.net/up/23/38/rozk.jpg" },
+            { nom: "Nuggets (10 boîte de 4)", prix: 400, quantite: 0, categorie: "Nuggets", image: "https://zupimages.net/up/23/38/nb1k.jpg" },
+            { nom: "Pomme", prix: 15, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/cr6j.png" },
+            { nom: "Fraise (boîte de 5)", prix: 15, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/2b9t.png" },
+            { nom: "Religieuse", prix: 15, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/h5n5.png" },
+            { nom: "Pomme (x10)", prix: 150, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/cr6j.png" },
+            { nom: "Fraise (10 boîte de 5)", prix: 150, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/2b9t.png" },
+            { nom: "Religieuse (x10)", prix: 150, quantite: 0, categorie: "Dessert", image: "https://zupimages.net/up/23/39/h5n5.png" }
             // ... Ajoutez les autres articles avec leurs images
         ];
 
@@ -323,4 +368,3 @@
     </script>
 </body>
 </html>
-
